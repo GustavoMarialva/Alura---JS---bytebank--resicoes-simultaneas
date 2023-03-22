@@ -22,6 +22,15 @@ async function conectaAPI() {
   console.log(conectaTraduzido);
 }
 
+function geraHorario() {
+  let data = new Date();
+  let horario =
+    data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+  console.log(horario);
+  return horario;
+}
+
+geraHorario();
 // Em resumo, construímos uma requisição do tipo GET para uma API. Como não sabemos se o retorno será rápido ou demorado, transformamos essa função em assíncrona. Desse modo, conseguimos esperar o retorno sem travar o restante do código.
 
 // Assim, temos uma conexão com uma biblioteca externa chamada Chart.js e uma requisição a uma API de cotação de moedas. Já conseguimos nos conectar com todos os recursos externos necessários para desenvolver nosso projeto.
