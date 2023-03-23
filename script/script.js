@@ -1,3 +1,5 @@
+import imprimeCotacao from "./imprimeCotacao.js";
+
 const graficoDolar = document.getElementById("graficoDolar");
 
 const graficoParaDOlar = new Chart(graficoDolar, {
@@ -22,6 +24,7 @@ async function conectaAPI() {
   let tempo = geraHorario();
   let valor = conectaTraduzido.USDBRL.ask;
   adicionarDados(graficoParaDOlar, tempo, valor);
+  imprimeCotacao("dólar", valor);
   // Em nosso código, colocamos o setInterval() para que conecte a API e rode a cada cinco segundos. Depois fazemos a requisição e colocamos o valor final de conectaTraduzido.USDBRL.ask para acessarmos o valor dentro do objeto referente à .ask, colocando na variável valor.
 }
 
