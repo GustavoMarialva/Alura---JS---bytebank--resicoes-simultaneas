@@ -90,3 +90,29 @@ workerIene.addEventListener("message", (event) => {
   selecionaCotacao("iene", valor);
   adicionarDados(graficoParaIene, tempo, valor);
 });
+
+const graficoPesoARG = document.getElementById("graficoPesoARG");
+const graficoParaPesoARG = new Chart(graficoPesoARG, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "Peso ARG",
+        data: [],
+        borderWidth: 1,
+      },
+    ],
+  },
+});
+
+let workerPesoARG = new Worker("./script/worker/workerPesoAR.js");
+
+workerPesoARG.postMessage("peso");
+
+workerPesoARG.addEventListener("message", (event) => {
+  let tempo = geraHorario();
+  let valor = event.data.ask;
+  selecionaCotacao("ars", valor);
+  adicionarDados(graficoParaPesoARG, tempo, valor);
+});
