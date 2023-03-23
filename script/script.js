@@ -108,7 +108,7 @@ const graficoParaPesoARG = new Chart(graficoPesoARG, {
 
 let workerPesoARG = new Worker("./script/worker/workerPesoAR.js");
 
-workerPesoARG.postMessage("peso");
+workerPesoARG.postMessage("pesoARS");
 
 workerPesoARG.addEventListener("message", (event) => {
   let tempo = geraHorario();
