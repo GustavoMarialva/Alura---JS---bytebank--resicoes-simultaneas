@@ -64,3 +64,29 @@ workerDolar.addEventListener("message", (event) => {
 // exibir o valor da cotação daquela moeda naquele horário na variável valor através do event.data.ask, onde ele recebe a mensagem enviada e recolhe o valor da venda por meio do .ask enviado pela API;
 // chamar a função imprimeCotacao() para imprimir os valores da moeda e adicionar os dados no gráfico.
 // O processo que realizamos acima é bem semelhante ao que fizemos antes, contudo, agora a conexão da API é feita por um trabalhador em segundo plano. Isso evita que o navegador trave em momentos de erro ou demora nas requisições.
+
+const graficoIene = document.getElementById("graficoIene");
+const graficoParaIene = new Chart(graficoIene, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "Iene",
+        data: [],
+        borderWidth: 1,
+      },
+    ],
+  },
+});
+
+let workerIene = new Worker("./script/worker/workerIene.js");
+
+workerIene.postMessage("iene");
+
+workerIene.addEventListener("message", (event) => {
+  let tempo = geraHorario();
+  let valor = event.data.ask;
+  imprimeCotacao("iene", valor);
+  adicionarDados(graficoParaIene, tempo, valor);
+});
