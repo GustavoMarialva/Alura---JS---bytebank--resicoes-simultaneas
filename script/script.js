@@ -1,4 +1,4 @@
-import imprimeCotacao from "./imprimeCotacao.js";
+import selecionaCotacao from "./imprimeCotacao.js";
 
 const graficoDolar = document.getElementById("graficoDolar");
 
@@ -54,7 +54,7 @@ workerDolar.postMessage("usd");
 workerDolar.addEventListener("message", (event) => {
   let tempo = geraHorario();
   let valor = event.data.ask;
-  imprimeCotacao("dolar", valor);
+  selecionaCotacao("dolar", valor);
   adicionarDados(graficoParaDOlar, tempo, valor);
 });
 // Selecionamos o workerDolar e adicionamos um addEventListener específico para ele.
@@ -87,6 +87,6 @@ workerIene.postMessage("iene");
 workerIene.addEventListener("message", (event) => {
   let tempo = geraHorario();
   let valor = event.data.ask;
-  imprimeCotacao("iene", valor);
+  selecionaCotacao("iene", valor);
   adicionarDados(graficoParaIene, tempo, valor);
 });
