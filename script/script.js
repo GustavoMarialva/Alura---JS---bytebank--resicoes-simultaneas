@@ -58,3 +58,8 @@ function adicionarDados(grafico, legenda, dados) {
 
 // **********************
 // Qual a função do setInterval()? Ele define um intervalo para algo acontecer, recebendo como parâmetro uma ação — neste caso, a chamada da API — junto ao tempo de duração de cada ciclo em milissegundos — neste caso, 5000 milissegundos que é equivalente à 5 segundos.
+
+let workerDolar = new Worker("./script/worker/workerDolar.js");
+// ler sobre worker no Notion
+workerDolar.postMessage("usd");
+// Podemos chamar essa etapa de processo multithread.
