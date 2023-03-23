@@ -51,3 +51,16 @@ let workerDolar = new Worker("./script/worker/workerDolar.js");
 // ler sobre worker no Notion
 workerDolar.postMessage("usd");
 // Podemos chamar essa etapa de processo multithread.
+workerDolar.addEventListener("message", (event) => {
+  let tempo = geraHorario();
+  let valor = event.data.ask;
+  imprimeCotacao("dolar", valor);
+  adicionarDados(graficoParaDOlar, tempo, valor);
+});
+// Selecionamos o workerDolar e adicionamos um addEventListener específico para ele.
+// Podemos considerar o addEventListener um fofoqueiro que gosta de ouvir o que os outros estão fazendo!
+// Ele esperou o workerDolar enviar uma mensagem, e a cada mensagem recebida ele recolhe os seus valores através do event e realiza as tarefas que adicionamos entre as chaves:
+// exibir o horário na variável tempo;
+// exibir o valor da cotação daquela moeda naquele horário na variável valor através do event.data.ask, onde ele recebe a mensagem enviada e recolhe o valor da venda por meio do .ask enviado pela API;
+// chamar a função imprimeCotacao() para imprimir os valores da moeda e adicionar os dados no gráfico.
+// O processo que realizamos acima é bem semelhante ao que fizemos antes, contudo, agora a conexão da API é feita por um trabalhador em segundo plano. Isso evita que o navegador trave em momentos de erro ou demora nas requisições.
