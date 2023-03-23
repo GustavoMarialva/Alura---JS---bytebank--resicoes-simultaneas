@@ -12,6 +12,8 @@ function imprimeCotacao(nome, valor) {
   }
 }
 
+export default imprimeCotacao;
+
 // Inicialmente, pegamos a lista e tiramos tudo o que há dentro para evitarmos a impressão da cotação constante e o crescimento exagerado da lista, pois não tem limites.
 
 // Depois, aplicamos o for () com a repetição que começa em 1 e, a cada vez que entrar no laço, irá aumentar a multiplicação do valor de antes por dez, até o multiplicador ter um valor igual a mil.
